@@ -1,11 +1,8 @@
+from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from batik_store.views import CategoryViewSet, ProductViewSet
-
-router = DefaultRouter()
-router.register(r'categories', CategoryViewSet)
-router.register(r'products', ProductViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('admin/', admin.site.urls),
+    path('batik_store/', include('batik_store.urls')),  # Ganti 'strobatik' dengan nama aplikasi Anda
+    # path('nama_aplikasi/', include('nama_aplikasi.urls')),  # Contoh untuk menambahkan aplikasi lain
 ]

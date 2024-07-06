@@ -1,18 +1,23 @@
 from django.db import models
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
+class Kategori(models.Model):
+    nama = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.nama
 
-class Product(models.Model):
-    name = models.CharField(max_length=200)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+class Produk(models.Model):
+    nama = models.CharField(max_length=200)
+    kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE)
+    deskripsi = models.TextField()
+    harga = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return self.nama
 
+class Stok(models.Model):
+    produk = models.OneToOneField(Produk, on_delete=models.CASCADE)
+    jumlah = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return f"Stok {self.produk.nama}: {self.jumlah} pcs"

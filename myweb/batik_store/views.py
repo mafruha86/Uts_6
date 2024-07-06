@@ -1,11 +1,15 @@
 from rest_framework import viewsets
-from .models import Category, Product
-from .serializers import CategorySerializer, ProductSerializer
+from .models import Kategori, Produk, Stok
+from .serializers import KategoriSerializer, ProdukSerializer, StokSerializer
 
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+class KategoriViewSet(viewsets.ModelViewSet):
+    queryset = Kategori.objects.all()
+    serializer_class = KategoriSerializer
 
-class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+class ProdukViewSet(viewsets.ModelViewSet):
+    queryset = Produk.objects.all()
+    serializer_class = ProdukSerializer
+
+class StokViewSet(viewsets.ModelViewSet):
+    queryset = Stok.objects.all()
+    serializer_class = StokSerializer
